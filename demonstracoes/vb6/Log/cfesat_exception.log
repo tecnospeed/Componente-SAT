@@ -1,0 +1,23 @@
+[14/08/2018 11:19:24:629] 3788 - EspdCFeSatNomeDllVazioException : A DLL: SAT.dll não foi encontrada.
+[14/08/2018 11:23:00:100] 3788 - EspdCFeSatNomeDllVazioException : A DLL: SAT.dll não foi encontrada.
+[14/08/2018 11:23:40:044] 3788 - EspdCFeSatNomeDllVazioException : A DLL: SAT.dll não foi encontrada.
+[14/08/2018 11:24:48:412] 3788 - EspdCFeSatNomeDllVazioException : A DLL: SAT.dll não foi encontrada.
+[14/08/2018 11:25:45:707] 3788 - EspdCFeSatNomeDllVazioException : A DLL: SAT.dll não foi encontrada.
+[14/08/2018 11:36:07:575] 3788 - EspdCFeSatCancelarUltVendaException : A identificação da Software House deve ser um CPF ou CNPJ.
+[14/08/2018 11:38:03:074] 3788 - EspdCFeSatCancelarUltVendaException : Error ao gerar a assinatura do aplicativo comercial para o método CancelarUltimaVenda. Erro: Erro ao assinar mensagem: "Não foi possível carregar o certificado "" devido ao seguinte problema: "Certificado não encontrado.""
+[14/08/2018 11:39:33:008] 3788 - EspdCFeSatEnviarDadosVendaException : XML de entrada não pode ser vazio
+[14/08/2018 11:42:45:919] 3788 - EspdCFeSatPrintEditarException : could not load xml Falha de validação: documento não contém exatamente um nó raiz.
+ []
+[14/08/2018 11:42:45:919] 3788 - EspdCFeSatEditarCFeSatException : Problemas ao editar o CFe Sat: could not load xml Falha de validação: documento não contém exatamente um nó raiz.
+ []
+[14/08/2018 11:43:15:603] 3788 - EspdCFeSatConverterCarregarTx2Exception : Conteúdo do tx2 a ser convertido é inválido.
+[14/08/2018 11:43:36:582] 3788 - EspdCFeSatConverterCarregarTx2Exception : Conteúdo do tx2 a ser convertido é inválido.
+[14/08/2018 11:45:20:295] 3788 - EspdCFeSatConverterCarregarTx2Exception : Conteúdo do tx2 a ser convertido é inválido.
+[14/08/2018 13:44:35:315] 3328 - EspdCFeSatPrintImprimirException : could not load xml Falha de validação: documento não contém exatamente um nó raiz.
+ []
+[14/08/2018 13:44:35:321] 3328 - EspdCFeSatImprimirCFeSatException : Problemas ao imprimir o CFe Sat: could not load xml Falha de validação: documento não contém exatamente um nó raiz.
+ []
+[14/08/2018 13:44:39:263] 3328 - EspdCFeSatPrintImprimirException : could not load xml Falha de validação: documento não contém exatamente um nó raiz.
+ []
+[14/08/2018 13:44:39:264] 3328 - EspdCFeSatImprimirCFeSatException : Problemas ao imprimir o CFe Sat: could not load xml Falha de validação: documento não contém exatamente um nó raiz.
+ []

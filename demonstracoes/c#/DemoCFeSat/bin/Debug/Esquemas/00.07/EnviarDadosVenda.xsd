@@ -1,0 +1,988 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+    attributeFormDefault="unqualified" elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="CFe">
+		<xs:complexType>
+			<xs:sequence>
+				<!--Grupo A-->
+				<xs:element maxOccurs="1" minOccurs="1" name="infCFe">
+					<xs:complexType>
+						<xs:sequence>
+							<!--Grupo B-->
+							<xs:element maxOccurs="1" minOccurs="1" name="ide">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="1" minOccurs="1" name="CNPJ">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="[0-9]{14}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="1" name="signAC">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="344"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="1" name="numeroCaixa">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="[0-9]{3}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<!--Grupo C-->
+							<xs:element maxOccurs="1" minOccurs="1" name="emit">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="1" minOccurs="1" name="CNPJ">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="[0-9]{14}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="1" name="IE">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="50"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="0" name="IM">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="50"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="0" name="cRegTribISSQN">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="[0-9]{1}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="1" name="indRatISSQN">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<!--Grupo E-->
+							<xs:element maxOccurs="1" minOccurs="1" name="dest">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:choice>
+											<xs:element maxOccurs="1" minOccurs="0" name="CNPJ">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:pattern value="[0-9]{14}"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+											<xs:element maxOccurs="1" minOccurs="0" name="CPF">
+												<xs:simpleType>
+													<xs:restriction base="xs:string">
+														<xs:pattern value="[0-9]{0}|[0-9]{11}"/>
+													</xs:restriction>
+												</xs:simpleType>
+											</xs:element>
+										</xs:choice>
+										<xs:element maxOccurs="1" minOccurs="0" name="xNome">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="2"/>
+													<xs:maxLength value="60"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<!--Grupo G-->
+							<xs:element maxOccurs="1" minOccurs="0" name="entrega">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="1" minOccurs="1" name="xLgr">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="2"/>
+													<xs:maxLength value="60"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="1" name="nro">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="60"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="0" name="xCpl">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="60"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="1" name="xBairro">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="60"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="1" name="xMun">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="2"/>
+													<xs:maxLength value="60"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="1" name="UF">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="2"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<!--Grupo H-->
+							<xs:element maxOccurs="500" minOccurs="1" name="det">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="1" minOccurs="1" name="prod">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="cProd">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:minLength value="1"/>
+																<xs:maxLength value="60"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="cEAN">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern
+                                                  value="[0-9]{8}|[0-9]{12}|[0-9]{13}|[0-9]{14}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="xProd">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:minLength value="1"/>
+																<xs:maxLength value="120"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="0" name="NCM">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{2}|[0-9]{8}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="CFOP">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{4}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="uCom">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:minLength value="1"/>
+																<xs:maxLength value="6"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="qCom">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{1,11}[.]{1}[0-9]{4}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="vUnCom">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{1,12}[.]{1}[0-9]{2,3}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="indRegra">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:length value="1"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="vDesc">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="vOutro">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="10" minOccurs="0"
+                                                  name="obsFiscoDet">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="xTextoDet">
+																	<xs:simpleType>
+																		<xs:restriction base="xs:string">
+																			<xs:minLength value="1"/>
+																			<xs:maxLength value="60"/>
+																		</xs:restriction>
+																	</xs:simpleType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="xCampoDet" use="required">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:minLength value="1"/>
+																		<xs:maxLength value="20"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<!--Grupo M-->
+										<xs:element maxOccurs="1" minOccurs="1" name="imposto">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="vItem12741">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:choice maxOccurs="1" minOccurs="1">
+														<!--Grupo N-->
+														<xs:element name="ICMS">
+															<xs:complexType>
+																<xs:choice>
+																	<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="ICMS00">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="Orig">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:pattern value="[0-8]{1}"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:element>
+																				<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:pattern value="[0-9]{2}"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:element>
+																				<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="pICMS">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:pattern value="[0-9]{1,3}[.]{1}[0-9]{2}"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="ICMS40">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="Orig">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:pattern value="[0-8]{1}"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:element>
+																				<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:pattern value="[0-9]{2}"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="ICMSSN102">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="Orig">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:pattern value="[0-8]{1}"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:element>
+																				<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="CSOSN">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:pattern value="[0-9]{3}"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																	<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="ICMSSN900">
+																		<xs:complexType>
+																			<xs:sequence>
+																				<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="Orig">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:pattern value="[0-8]{1}"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:element>
+																				<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="CSOSN">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:pattern value="[0-9]{3}"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:element>
+																				<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="pICMS">
+																					<xs:simpleType>
+																						<xs:restriction base="xs:string">
+																							<xs:pattern value="[0-9]{1,3}[.]{1}[0-9]{2}"/>
+																						</xs:restriction>
+																					</xs:simpleType>
+																				</xs:element>
+																			</xs:sequence>
+																		</xs:complexType>
+																	</xs:element>
+																</xs:choice>
+															</xs:complexType>
+														</xs:element>
+														<!--Grupo U-->
+														<xs:element name="ISSQN">
+															<xs:complexType>
+																<xs:sequence>
+																	<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="vDeducISSQN">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="vAliq">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:pattern value="[0-9]{3}[.]{1}[0-9]{2}"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="cMunFG">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:pattern value="[0-9]{7}"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="cListServ">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:length value="5"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="cServTribMun">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:length value="20"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="cNatOp">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:pattern value="[0-9]{2}"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																	<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="indIncFisc">
+																		<xs:simpleType>
+																			<xs:restriction base="xs:string">
+																				<xs:pattern value="[1-2]{1}"/>
+																			</xs:restriction>
+																		</xs:simpleType>
+																	</xs:element>
+																</xs:sequence>
+															</xs:complexType>
+														</xs:element>
+													</xs:choice>
+													<!--Grupo Q-->
+													<xs:element maxOccurs="1" minOccurs="1" name="PIS">
+														<xs:complexType>
+															<xs:choice>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="PISAliq">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element maxOccurs="1" minOccurs="1" name="vBC">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="pPIS">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="\A[0-9]{1}[.][0-9]{4}\z"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="PISQtde">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="qBCProd">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{1,12}[.]{1}[0-9]{4}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="vAliqProd">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{1,11}[.]{1}[0-9]{4}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="PISNT">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="PISSN">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="PISOutr">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:choice maxOccurs="1" minOccurs="1">
+																				<xs:choice maxOccurs="2" minOccurs="2">
+																					<xs:element maxOccurs="1" minOccurs="0" name="vBC">
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="pPIS">
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:pattern value="[0-9]{1}[.]{1}[0-9]{4}"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																				</xs:choice>
+																				<xs:choice maxOccurs="2" minOccurs="2">
+																					<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="qBCProd">
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:pattern value="[0-9]{1,12}[.]{1}[0-9]{4}"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="vAliqProd">
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:pattern value="[0-9]{1,11}[.]{1}[0-9]{4}"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																				</xs:choice>
+																			</xs:choice>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:choice>
+														</xs:complexType>
+													</xs:element>
+													<!--Grupo R-->
+													<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="PISST">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:choice maxOccurs="1" minOccurs="1">
+																	<xs:choice maxOccurs="2" minOccurs="2">
+																		<xs:element maxOccurs="1" minOccurs="0" name="vBC">
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:element>
+																		<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="pPIS">
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:pattern value="[0-9]{1}[.]{1}[0-9]{4}"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:element>
+																	</xs:choice>
+																	<xs:choice maxOccurs="2" minOccurs="2">
+																		<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="qBCProd">
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:pattern value="[0-9]{1,12}[.]{1}[0-9]{4}"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:element>
+																		<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="vAliqProd">
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:pattern value="[0-9]{1,11}[.]{1}[0-9]{4}"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:element>
+																	</xs:choice>
+																</xs:choice>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<!--Grupo S-->
+													<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="COFINS">
+														<xs:complexType>
+															<xs:choice>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="COFINSAliq">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element maxOccurs="1" minOccurs="1" name="vBC">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="pCOFINS">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{1}[.]{1}[0-9]{4}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="COFINSQtde">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="qBCProd">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{1,12}[.]{1}[0-9]{4}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="vAliqProd">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{1,11}[.]{1}[0-9]{4}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="COFINSNT">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="COFINSSN">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element maxOccurs="1" minOccurs="1"
+                                                  name="COFINSOutr">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element maxOccurs="1" minOccurs="1" name="CST">
+																				<xs:simpleType>
+																					<xs:restriction base="xs:string">
+																						<xs:pattern value="[0-9]{2}"/>
+																					</xs:restriction>
+																				</xs:simpleType>
+																			</xs:element>
+																			<xs:choice maxOccurs="1" minOccurs="1">
+																				<xs:choice maxOccurs="2" minOccurs="2">
+																					<xs:element maxOccurs="1" minOccurs="0" name="vBC">
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="pCOFINS">
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:pattern value="[0-9]{1}[.]{1}[0-9]{4}"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																				</xs:choice>
+																				<xs:choice maxOccurs="2" minOccurs="2">
+																					<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="qBCProd">
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:pattern value="[0-9]{1,12}[.]{1}[0-9]{4}"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																					<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="vAliqProd">
+																						<xs:simpleType>
+																							<xs:restriction base="xs:string">
+																								<xs:pattern value="[0-9]{1,11}[.]{1}[0-9]{4}"/>
+																							</xs:restriction>
+																						</xs:simpleType>
+																					</xs:element>
+																				</xs:choice>
+																			</xs:choice>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:choice>
+														</xs:complexType>
+													</xs:element>
+													<!--Grupo T-->
+													<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="COFINSST">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:choice maxOccurs="1" minOccurs="1">
+																	<xs:choice maxOccurs="2" minOccurs="2">
+																		<xs:element maxOccurs="1" minOccurs="0" name="vBC">
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:element>
+																		<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="pCOFINS">
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:pattern value="[0-9]{1}[.]{1}[0-9]{4}"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:element>
+																	</xs:choice>
+																	<xs:choice maxOccurs="2" minOccurs="2">
+																		<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="qBCProd">
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:pattern value="[0-9]{1,12}[.]{1}[0-9]{4}"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:element>
+																		<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="vAliqProd">
+																			<xs:simpleType>
+																				<xs:restriction base="xs:string">
+																					<xs:pattern value="[0-9]{1,11}[.]{1}[0-9]{4}"/>
+																				</xs:restriction>
+																			</xs:simpleType>
+																		</xs:element>
+																	</xs:choice>
+																</xs:choice>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<!--Grupo V-->
+										<xs:element maxOccurs="1" minOccurs="0" name="infAdProd">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="500"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="nItem" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:string">
+												<xs:pattern value="[0-9]{1,3}"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+							<!--Grupo W-->
+							<xs:element maxOccurs="1" minOccurs="1" name="total">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="1" minOccurs="0" name="DescAcrEntr">
+											<xs:complexType>
+												<xs:choice>
+													<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="vDescSubtot">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="vAcresSubtot">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:choice>
+											</xs:complexType>
+										</xs:element>
+										<xs:element maxOccurs="1" minOccurs="0" name="vCFeLei12741">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<!--Grupo WA-->
+							<xs:element maxOccurs="1" minOccurs="1" name="pgto">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="10" minOccurs="1" name="MP">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element maxOccurs="1" minOccurs="1" name="cMP">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{2}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="1" name="vMP">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{1,13}[.]{1}[0-9]{2}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element maxOccurs="1" minOccurs="0"
+                                                  name="cAdmC">
+														<xs:simpleType>
+															<xs:restriction base="xs:string">
+																<xs:pattern value="[0-9]{3}"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<!--Grupo Z-->
+							<xs:element maxOccurs="1" minOccurs="0" name="infAdic">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="1" minOccurs="0" name="infCpl">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="5000"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="versaoDadosEnt" use="required">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:pattern value="[0-9]{1,2}[.]{1}[0-9]{2}"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<!-- Signature -->
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

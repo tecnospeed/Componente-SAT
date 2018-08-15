@@ -1,0 +1,1 @@
+numeroSessao|EEEEE|mensagem|cod|mensagemSEFAZ
