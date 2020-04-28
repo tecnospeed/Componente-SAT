@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, spdCFeSat, spdCFeSatDataSets, ComCtrls, ExtCtrls, spdCFeSatType, Clipbrd;
+  Dialogs, StdCtrls, spdCFeSat, spdCFeSatDataSets, ComCtrls, ExtCtrls, spdCFeSatType, Clipbrd,
+  xmldoc, xmlintf, msxml, msxmldom, XmlDom, XmlConst;
 
 type
   TfrmPrincipal = class(TForm)
@@ -49,7 +50,6 @@ type
     btnEditar: TButton;
     btnExportar: TButton;
     btnSalvarConfiguracoes: TButton;
-    btnCopiarClipboard: TButton;
     btnConverteTx2ParaXml: TButton;
     editarCancelada: TButton;
     dlgOpenArqImpressaoCancelada: TOpenDialog;
@@ -69,6 +69,8 @@ type
     edtSessao: TEdit;
     Label2: TLabel;
     CheckBox1: TCheckBox;
+    btnCarregarInformacoesDS: TButton;
+    Button1: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnAtivarSatClick(Sender: TObject);
@@ -92,7 +94,6 @@ type
     procedure btnEditarClick(Sender: TObject);
     procedure btnExportarClick(Sender: TObject);
     procedure btnSalvarConfiguracoesClick(Sender: TObject);
-    procedure btnCopiarClipboardClick(Sender: TObject);
     procedure btnConverteTx2ParaXmlClick(Sender: TObject);
     procedure editarCanceladaClick(Sender: TObject);
     procedure btnImprimirCanceladaClick(Sender: TObject);
@@ -103,12 +104,17 @@ type
     procedure cbcertificadosChange(Sender: TObject);
     procedure btnGerarViaDataSetClick(Sender: TObject);
     procedure CheckBox1Click(Sender: TObject);
+    procedure btnCarregarInformacoesDSClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
   private
     FCFeSat : TspdCFeSat;
     procedure DoOnProgress(const aLogMessage : String);
     function getNumeroSessao: integer;
     function ObterConteudo(aConteudo: WideString; aLinha: integer): WideString;
     function LoadXMLSAT(aChave: String): WideString;
+    function selectNode(xnRoot: IXmlNode; const nodePath: WideString): IXmlNode;
+    function selectNodes(xnRoot: IXMLNode;const nodePath: WideString): IXMLNodeList;
+    function obterNroResultado(const aXML: String; aTag, aEndTag: string): string;
   public
     { Public declarations }
   end;
@@ -201,6 +207,279 @@ begin
   mmoRetornoSat.Text := FCFeSat.CancelarUltimaVenda(getNumeroSessao,_chave,_CNPJSoftwareHouse, _CNPJCPFDestinatario, _NumeroCaixa, _SignAC);
 end;
 
+function TfrmPrincipal.obterNroResultado(const aXML: String; aTag,
+  aEndTag: string): string;
+var
+  _Posini, _Posfim  : integer;
+begin
+   Result := '';
+  _Posini:= Pos(aTag,aXML);
+  _Posfim:= Pos(aEndTag,aXML);
+  if  ( _Posini > 0 ) then
+    begin
+      inc(_PosIni, Length(aTag));
+      Result:=Copy(aXML,_Posini+1,(_PosFim-_PosIni)-1);
+    end;
+end;
+
+procedure TfrmPrincipal.btnCarregarInformacoesDSClick(Sender: TObject);
+var
+  listaInformacoes : TStringList;
+  XML: TXMLDocument;
+  XMLnodeAux1: IXMLNode;
+  XMLnodeAux2: IXMLNode;
+  i : Integer;
+
+  _cUF, _cNF, _mod, _nserieSAT, _nCFe, _dEmi, _hEmi, _cDV, _tpAmb, _CNPJ, _signAC, _assinaturaQRCODE, _numeroCaixa : string;
+  _emit_CNPJ, _emit_xNome, _emit_enderEmit,_emit_IE, _emit_cRegTrib, _emit_indRatISSQN : string;
+  _emit_xLgr, _emit_nro, _emit_xBairro, _emit_xMun, _emit_CEP : string;
+  _dest_CNPJ, _dest_xNome : string;
+  _prod_cProd, _xProd, _NCM, _CFOP, _uCom, _qCom, _vUnCom, _vProd, _indRegra, _vItem, _ICMS_Orig, _ICMS_CST, _PIS_CST, _COFINS_CST : string;
+  _total_vICMS, _total_vProd, _total_vDesc, _total_vPIS, _total_vCOFINS, _total_vPISST, _total_vOutro : string;
+  _pgto_cMP, _pgto_vMP : string;
+  _pgto_vTroco, _obsFisco : string;
+
+  procedure CarregarArquivo(nomeDoArquivo: String);
+  begin
+    XML := TXMLDocument.Create(self); 
+    XML.LoadFromFile(nomeDoArquivo);
+    XML.Active := True;
+  end;
+
+  function obterValor(tag: string; XMLNodeAux: IXMLNode): string;
+  var I: Integer;
+      NodeText: string;
+  begin
+    Result := '';
+
+    if XMLNodeAux.NodeType <> ntElement then
+    Exit;
+
+    NodeText := XMLNodeAux.NodeName;
+
+    if  (XMLNodeAux.IsTextElement)
+    and (UpperCase(NodeText) = UpperCase(tag)) then
+    begin
+      Result := XMLNodeAux.NodeValue;
+      exit;
+    end;
+
+    if XMLNodeAux.HasChildNodes then
+      for I := 0 to XMLNodeAux.ChildNodes.Count - 1 do
+      begin
+        Result := obterValor(tag, XMLNodeAux.ChildNodes[I]);
+        if Result <> '' then
+          Break;
+      end;
+  end;
+
+  function BuscarNode(tag: string; XMLNodeAux: IXMLNode): IXMLNode;
+  var I: Integer;
+      NodeText: string;
+  begin
+    Result := nil;
+
+    NodeText := XMLNodeAux.NodeName;
+
+    if (UpperCase(NodeText) = UpperCase(tag)) then
+    begin
+      Result := XMLNodeAux;
+      exit;
+    end;
+
+    if XMLNodeAux.HasChildNodes then
+      for I := 0 to XMLNodeAux.ChildNodes.Count - 1 do
+      begin
+        Result := BuscarNode(tag, XMLNodeAux.ChildNodes[I]);
+        if Assigned(Result) then
+          Break;
+      end;
+  end;
+begin
+  if dlgOpenArqFimAFim.Execute then
+    CarregarArquivo(dlgOpenArqFimAFim.FileName)
+  else
+    exit;
+
+
+
+    _cUF              := obterValor('cUF',XML.DocumentElement);
+    _cNF              := obterValor('cNF',XML.DocumentElement);
+    _mod              := obterValor('mod',XML.DocumentElement);
+    _nserieSAT        := obterValor('nserieSAT',XML.DocumentElement);
+    _nCFe             := obterValor('nCFe',XML.DocumentElement);
+    _dEmi             := obterValor('dEmi',XML.DocumentElement);
+    _hEmi             := obterValor('hEmi',XML.DocumentElement);
+    _cDV              := obterValor('cDV',XML.DocumentElement);
+    _tpAmb            := obterValor('tpAmb',XML.DocumentElement);
+    _CNPJ             := obterValor('CNPJ',XML.DocumentElement);
+    _signAC           := obterValor('signAC',XML.DocumentElement);
+    _assinaturaQRCODE := obterValor('assinaturaQRCODE',XML.DocumentElement);
+    _numeroCaixa      := obterValor('numeroCaixa',XML.DocumentElement);
+
+    {/CFe/infCFe/emit}
+    XMLnodeAux2 := BuscarNode('emit',XML.DocumentElement);
+    if Assigned(XMLnodeAux2) then
+    begin
+      _emit_CNPJ        := obterValor('CNPJ',XMLnodeAux2);
+      _emit_xNome       := obterValor('xNome',XMLnodeAux2);
+      _emit_enderEmit   := obterValor('xFant',XMLnodeAux2);
+      _emit_IE          := obterValor('IE',XMLnodeAux2);
+      _emit_cRegTrib    := obterValor('cRegTrib',XMLnodeAux2);
+      _emit_indRatISSQN := obterValor('indRatISSQN',XMLnodeAux2);
+    end;
+    XMLnodeAux2 := nil;
+
+    {/CFe/infCFe/emit/enderEmit}
+    XMLnodeAux2 := BuscarNode('enderEmit',XML.DocumentElement);
+    if Assigned(XMLnodeAux2) then
+    begin
+      _emit_xLgr    := obterValor('xLgr',XMLnodeAux2);
+      _emit_nro     := obterValor('nro',XMLnodeAux2);
+      _emit_xBairro := obterValor('xBairro',XMLnodeAux2);
+      _emit_xMun    := obterValor('xMun',XMLnodeAux2);
+      _emit_CEP     := obterValor('CEP',XMLnodeAux2);
+    end;
+    XMLnodeAux2 := nil;
+
+    {/CFe/infCFe/dest}
+    XMLnodeAux2 := BuscarNode('dest',XML.DocumentElement);
+    if Assigned(XMLnodeAux2) then
+    begin
+      _dest_CNPJ  := obterValor('CNPJ',XMLnodeAux2);
+      _dest_xNome := obterValor('xNome',XMLnodeAux2);
+    end;
+    XMLnodeAux2 := nil;
+
+    {Produtos}
+    {/CFe/infCFe/det/*}
+    XMLnodeAux2 := BuscarNode('det',XML.DocumentElement);
+    if Assigned(XMLnodeAux2) then
+      for i := 0 to XMLnodeAux2.ChildNodes.Count -1 do
+      begin
+         _prod_cProd := obterValor('cProd',XMLnodeAux2.ChildNodes[I]);
+         _xProd      := obterValor('xProd',XMLnodeAux2.ChildNodes[I]);
+         _NCM        := obterValor('NCM',XMLnodeAux2.ChildNodes[I]);
+         _CFOP       := obterValor('CFOP',XMLnodeAux2.ChildNodes[I]);
+         _uCom       := obterValor('uCom',XMLnodeAux2.ChildNodes[I]);
+         _qCom       := obterValor('qCom',XMLnodeAux2.ChildNodes[I]);
+         _vUnCom     := obterValor('vUnCom',XMLnodeAux2.ChildNodes[I]);
+         _vProd      := obterValor('vProd',XMLnodeAux2.ChildNodes[I]);
+         _indRegra   := obterValor('indRegra',XMLnodeAux2.ChildNodes[I]);
+         _vItem      := obterValor('vItem',XMLnodeAux2.ChildNodes[I]);
+
+         XMLnodeAux1 := BuscarNode('ICMS',XMLnodeAux2.ChildNodes[I]);
+         if Assigned(XMLnodeAux1) then
+         begin
+           _ICMS_Orig  := obterValor('Orig',XMLnodeAux1);
+           _ICMS_CST   := obterValor('CST',XMLnodeAux1);
+           XMLnodeAux1 := nil;
+         end;
+
+         XMLnodeAux1 := BuscarNode('PIS',XMLnodeAux2.ChildNodes[I]);
+         if Assigned(XMLnodeAux1) then
+         begin
+           _PIS_CST    := obterValor('CST',XMLnodeAux1);
+           XMLnodeAux1 := nil;
+         end;
+
+         XMLnodeAux1 := BuscarNode('COFINS',XMLnodeAux2.ChildNodes[I]);
+         if Assigned(XMLnodeAux1) then
+         begin
+           _COFINS_CST := obterValor('CST',XMLnodeAux1);
+           XMLnodeAux1 := nil;
+         end;
+      end;
+    XMLnodeAux2 := nil;
+
+    {/CFe/infCFe/total/ICMSTot}
+    _total_vICMS   := obterValor('vICMS',XML.DocumentElement);
+    _total_vProd   := obterValor('vProd',XML.DocumentElement);
+    _total_vDesc   := obterValor('vDesc',XML.DocumentElement);
+    _total_vPIS    := obterValor('vPIS',XML.DocumentElement);
+    _total_vCOFINS := obterValor('vCOFINS',XML.DocumentElement);
+    _total_vPISST  := obterValor('vPISST',XML.DocumentElement);
+    _total_vPISST  := obterValor('vCOFINSST',XML.DocumentElement);
+    _total_vOutro  := obterValor('vOutro',XML.DocumentElement);
+
+    {Pagamentos}
+    {CFe/infCFe/pgto*}
+    XMLnodeAux2 := BuscarNode('pgto',XML.DocumentElement);
+    if Assigned(XMLnodeAux2) then
+      for i := 0 to XMLnodeAux2.ChildNodes.Count -1 do
+      begin
+        _pgto_cMP := obterValor('cMP',XMLnodeAux2.ChildNodes[I]);
+        _pgto_vMP := obterValor('vMP',XMLnodeAux2.ChildNodes[I]);
+      end;
+    XMLnodeAux2 := nil;
+
+    {/CFe/infCFe/pgto}
+    _pgto_vTroco := obterValor('vTroco',XML.DocumentElement);
+
+    {/CFe/infCFe/infAdic/obsFisco}
+    _obsFisco := obterValor('xTexto',XML.DocumentElement);
+
+  //end;
+
+end;
+
+function TfrmPrincipal.selectNode(xnRoot: IXmlNode; const nodePath: WideString): IXmlNode;
+var
+  intfSelect : IDomNodeSelect;
+  dnResult : IDOMNode;
+  intfDocAccess : IXmlDocumentAccess;
+  doc: TXmlDocument;
+begin
+  if not Assigned(xnRoot) or not Supports(xnRoot.DOMNode, IDomNodeSelect, intfSelect) then
+    Exit;
+  dnResult := intfSelect.selectNode(nodePath);
+
+  if Assigned(dnResult) then
+  begin
+    if Supports(xnRoot.OwnerDocument, IXmlDocumentAccess, intfDocAccess) then
+      doc := intfDocAccess.DocumentObject
+    else
+      doc := nil;
+    Result := TXmlNode.Create(dnResult, nil, doc);
+  end;
+
+end;
+
+function TfrmPrincipal.selectNodes(xnRoot: IXmlNode; const nodePath: WideString): IXMLNodeList;
+var
+  intfSelect : IDomNodeSelect;
+  intfAccess : IXmlNodeAccess;
+  dnlResult  : IDomNodeList;
+  intfDocAccess : IXmlDocumentAccess;
+  doc: TXmlDocument;
+  i : Integer;
+  dn : IDomNode;
+begin
+  Result := nil;
+  if not Assigned(xnRoot)
+    or not Supports(xnRoot, IXmlNodeAccess, intfAccess)
+    or not Supports(xnRoot.DOMNode, IDomNodeSelect, intfSelect) then
+    Exit;
+
+  dnlResult := intfSelect.selectNodes(nodePath);
+  if Assigned(dnlResult) then
+  begin
+    Result := TXmlNodeList.Create(intfAccess.GetNodeObject, '', nil);
+    if Supports(xnRoot.OwnerDocument, IXmlDocumentAccess, intfDocAccess) then
+      doc := intfDocAccess.DocumentObject
+    else
+      doc := nil;
+
+    for i := 0 to dnlResult.length - 1 do
+    begin
+      dn := dnlResult.item[i];
+      Result.Add(TXmlNode.Create(dn, nil, doc));
+    end;
+  end;
+end;
+
+
+
 procedure TfrmPrincipal.btnComunicarCertificadoICPClick(Sender: TObject);
 var
   _arquivo : TStringList;
@@ -284,11 +563,6 @@ begin
   finally
     _arquivo.Free;
   end;
-end;
-
-procedure TfrmPrincipal.btnCopiarClipboardClick(Sender: TObject);
-begin
-  Clipboard.AsText := mmoRetornoSat.Text;
 end;
 
 procedure TfrmPrincipal.btnDesbloquearSatClick(Sender: TObject);
@@ -587,6 +861,19 @@ begin
   end;
 end;
 
+procedure TfrmPrincipal.Button1Click(Sender: TObject);
+begin
+  if mmoRetornoSat.Text = '' then
+  begin
+    mmoLogs.Lines.Add('Memo de retorno esta vázio.');
+    Exit;
+  end;
+
+  Clipboard.AsText := mmoRetornoSat.Text;
+
+  FCFeSat.EditarCFeSAT(mmoRetornoSat.Text, '');
+end;
+
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   FCFeSat := TspdCFeSat.Create(nil);
@@ -627,6 +914,7 @@ var
 begin
   _dataSet := TspdCFeSatDataSets.Create(nil);
   SignAC := 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa' + 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+
   try
     _dataSet.VersaoEsquema := ve0007;
     _dataSet.ArquivoConversorXml := FCFeSat.DiretorioTemplates + 'Conversor\CFeSatDataSets.xml';
@@ -716,6 +1004,7 @@ begin
     _dataSet.Campo('infCpl_Z02').Value := '';
     _dataSet.Salvar;
     mmoRetornoSat.Text := _dataSet.LoteCFeSat.Text;
+    _dataSet.Salvar;
   finally
     FreeAndNil(_dataSet);
   end;

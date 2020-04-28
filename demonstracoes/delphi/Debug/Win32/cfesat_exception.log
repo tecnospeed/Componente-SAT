@@ -1,7 +1,0 @@
-[14/08/2018 13:48:34:830] 2544 - EspdCFeSatConfigINIException : Arquivo C:\Users\matheus.carvalho\Documents\DemoCFeSat Delphi\Demo SAT - Delphi\Debug\Win32\cfesatConfig.ini não foi encontrado
-[14/08/2018 13:48:34:841] 2544 - EspdCFeSatLoadConfigException : Problema ao carregar configurações: Arquivo C:\Users\matheus.carvalho\Documents\DemoCFeSat Delphi\Demo SAT - Delphi\Debug\Win32\cfesatConfig.ini não foi encontrado
-[14/08/2018 13:51:40:500] 6468 - EspdCFeSatConverterArquivoTemplateNaoEncontradoException : Arquivo de template do conversor não encontrado: C:\Users\matheus.carvalho\Documents\DemoCFeSat Delphi\Demo SAT - Delphi\Debug\Win32\Templates\Conversor\CFeSatDataSets.xml
-[14/08/2018 13:55:00:120] 576 - EspdCFeSatNomeDllVazioException : A DLL:  não foi encontrada.
-[14/08/2018 14:05:17:714] 2852 - EspdCFeSatNomeDllVazioException : A DLL:  não foi encontrada.
-[14/08/2018 14:45:26:920] 11504 - EspdCFeSatNomeDllVazioException : A DLL:  não foi encontrada.
-[14/08/2018 14:45:41:281] 5272 - EspdCFeSatNomeDllVazioException : A DLL:  não foi encontrada.

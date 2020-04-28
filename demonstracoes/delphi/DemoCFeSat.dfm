@@ -1,10 +1,10 @@
 object frmPrincipal: TfrmPrincipal
-  Left = 204
-  Top = 38
+  Left = 610
+  Top = 182
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Demonstra'#231#227'o Componente SAT'
-  ClientHeight = 631
+  ClientHeight = 547
   ClientWidth = 922
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,34 +20,34 @@ object frmPrincipal: TfrmPrincipal
   TextHeight = 13
   object lblRetornoSat: TLabel
     Left = 8
-    Top = 355
-    Width = 80
+    Top = 307
+    Width = 117
     Height = 13
-    Caption = 'Retorno do SAT:'
+    Caption = 'Retorno/Leitura do SAT:'
   end
   object lblLog: TLabel
     Left = 8
-    Top = 547
-    Width = 21
+    Top = 460
+    Width = 22
     Height = 13
     Caption = 'Log:'
   end
   object mmoRetornoSat: TMemo
     Left = 8
-    Top = 374
+    Top = 326
     Width = 906
-    Height = 163
+    Height = 123
     Align = alCustom
     ScrollBars = ssVertical
     TabOrder = 3
   end
   object mmoLogs: TMemo
     Left = 8
-    Top = 565
-    Width = 906
-    Height = 59
+    Top = 487
+    Width = 907
+    Height = 50
     Align = alCustom
-    TabOrder = 5
+    TabOrder = 4
   end
   object pnlConfigDemo: TPanel
     Left = 0
@@ -150,6 +150,7 @@ object frmPrincipal: TfrmPrincipal
       Width = 650
       Height = 21
       Style = csDropDownList
+      ItemHeight = 13
       TabOrder = 0
       OnChange = cbcertificadosChange
     end
@@ -270,20 +271,11 @@ object frmPrincipal: TfrmPrincipal
       OnClick = CheckBox1Click
     end
   end
-  object btnCopiarClipboard: TButton
-    Left = 800
-    Top = 512
-    Width = 97
-    Height = 25
-    Caption = 'Copiar conte'#250'do'
-    TabOrder = 4
-    OnClick = btnCopiarClipboardClick
-  end
   object pgcPaginasSAT: TPageControl
     Left = 6
-    Top = 195
+    Top = 199
     Width = 674
-    Height = 153
+    Height = 105
     ActivePage = tsImpressaoAD
     TabOrder = 1
     object tsAtivacao: TTabSheet
@@ -408,77 +400,101 @@ object frmPrincipal: TfrmPrincipal
       ImageIndex = 2
       object btnExportarCancelada: TButton
         Left = 427
-        Top = 16
+        Top = 1
         Width = 194
         Height = 25
         Caption = 'Exportar Nota Cancelada'
         TabOrder = 6
         OnClick = btnExportarCanceladaClick
       end
-      object btnVizualizarCancelada: TButton
-        Left = 218
-        Top = 78
-        Width = 195
-        Height = 25
-        Caption = 'Vizualizar Nota Cancelada'
-        TabOrder = 5
-        OnClick = btnVizualizarCanceladaClick
-      end
-      object btnImprimirCancelada: TButton
-        Left = 218
-        Top = 47
-        Width = 195
-        Height = 25
-        Caption = 'Imprimir Nota Cancelada'
-        TabOrder = 4
-        OnClick = btnImprimirCanceladaClick
-      end
-      object editarCancelada: TButton
-        Left = 427
-        Top = 47
-        Width = 194
-        Height = 25
-        Caption = 'Editar Nota Cancelada'
-        TabOrder = 7
-        OnClick = editarCanceladaClick
-      end
       object btnEditar: TButton
         Left = 218
-        Top = 16
+        Top = 1
         Width = 195
         Height = 25
         Caption = '4.3 - Editar'
         TabOrder = 3
         OnClick = btnEditarClick
       end
-      object btnExportar: TButton
-        Left = 8
-        Top = 47
-        Width = 195
-        Height = 25
-        Caption = '4.1 - Exportar'
-        TabOrder = 1
-        OnClick = btnExportarClick
-      end
       object btnImprimirCFe: TButton
         Left = 8
-        Top = 16
+        Top = 1
         Width = 195
         Height = 25
         Caption = '4.0 - Imprimir'
         TabOrder = 0
         OnClick = btnImprimirCFeClick
       end
+      object editarCancelada: TButton
+        Left = 427
+        Top = 25
+        Width = 194
+        Height = 25
+        Caption = 'Editar Nota Cancelada'
+        TabOrder = 7
+        OnClick = editarCanceladaClick
+      end
+      object btnImprimirCancelada: TButton
+        Left = 218
+        Top = 25
+        Width = 195
+        Height = 25
+        Caption = 'Imprimir Nota Cancelada'
+        TabOrder = 4
+        OnClick = btnImprimirCanceladaClick
+      end
+      object btnExportar: TButton
+        Left = 8
+        Top = 25
+        Width = 195
+        Height = 25
+        Caption = '4.1 - Exportar'
+        TabOrder = 1
+        OnClick = btnExportarClick
+      end
       object btnVisualizar: TButton
         Left = 8
-        Top = 78
+        Top = 49
         Width = 195
         Height = 25
         Caption = '4.2 - Visualizar'
         TabOrder = 2
         OnClick = btnVisualizarClick
       end
+      object btnVizualizarCancelada: TButton
+        Left = 218
+        Top = 49
+        Width = 195
+        Height = 25
+        Caption = 'Vizualizar Nota Cancelada'
+        TabOrder = 5
+        OnClick = btnVizualizarCanceladaClick
+      end
+      object btnCarregarInformacoesDS: TButton
+        Left = 427
+        Top = 49
+        Width = 194
+        Height = 25
+        Caption = 'Fazer leitura XML CF-e Sat'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 8
+        OnClick = btnCarregarInformacoesDSClick
+      end
     end
+  end
+  object Button1: TButton
+    Left = 784
+    Top = 455
+    Width = 131
+    Height = 25
+    Caption = 'Copiar/Editar conte'#250'do'
+    TabOrder = 5
+    OnClick = Button1Click
   end
   object dlgOpenArqFimAFim: TOpenDialog
     Left = 816
