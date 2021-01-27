@@ -47,3 +47,16 @@ C:\Users\Administrador\Documents\Demos\DemoCFeSat\DemoCFeSat\obj\Debug\DemoCFeSa
 C:\Users\Administrador\Documents\Demos\DemoCFeSat\DemoCFeSat\bin\Debug\DemoCFeSat.exe.config
 C:\Users\Administrador\Documents\Demos\DemoCFeSat\DemoCFeSat\bin\Debug\DemoCFeSat.exe
 C:\Users\Administrador\Documents\Demos\DemoCFeSat\DemoCFeSat\bin\Debug\DemoCFeSat.pdb
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\bin\Debug\DemoCFeSat.exe.config
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\bin\Debug\DemoCFeSat.exe
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\bin\Debug\DemoCFeSat.pdb
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\obj\Debug\DemoCFeSat.csprojAssemblyReference.cache
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\obj\Debug\Interop.CFeSatDataSetX.dll
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\obj\Debug\Interop.CFeSatX.dll
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\obj\Debug\DemoCFeSat.csproj.ResolveComReference.cache
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\obj\Debug\DemoCFeSat.Form1.resources
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\obj\Debug\DemoCFeSat.Properties.Resources.resources
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\obj\Debug\DemoCFeSat.csproj.GenerateResource.cache
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\obj\Debug\DemoCFeSat.csproj.CoreCompileInputs.cache
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\obj\Debug\DemoCFeSat.exe
+D:\Work\GIT-Demos\SAT\demonstracoes\c#\DemoCFeSat\obj\Debug\DemoCFeSat.pdb

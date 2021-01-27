@@ -23,6 +23,7 @@ namespace DemoCFeSat
         {
             InitializeComponent();
             string[] vetor;
+            cfeSat.ConfigurarSoftwareHouse("11111111111111", "");
 
             vetor = cfeSat.ListarCertificados("|").Split('|');
 
@@ -32,7 +33,7 @@ namespace DemoCFeSat
                 cbCertificado.Items.Add(vetor[i]);
             }
 
-            cfeSat.LoadConfig(Application.StartupPath + "\\cfesatConfig.ini");
+            cfeSat.LoadConfig("");
 
             tbNomeDLL.Text = cfeSat.NomeDllSat;
             cbCertificado.Text = cfeSat.NomeCertificado;
