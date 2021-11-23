@@ -2,4 +2,4 @@
 
 **Novidades**
 
-* DCEV-555 - Compatiblização do componente com o Delphi 11 Alexandria
+* DCEV-555 - Compatibilização do componente com o Delphi 11 Alexandria
