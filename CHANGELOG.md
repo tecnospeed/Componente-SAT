@@ -1,5 +1,12 @@
+﻿## [6.1.36.6093]
+
+**Novidades**
+
+* DCEV-555 - Compatibilização do componente com o Delphi 11 Alexandria
+
 ## [6.1.36.6091]
 
 **Novidades**
 
 * DCEV-555 - Compatibilização do componente com o Delphi 11 Alexandria
+
