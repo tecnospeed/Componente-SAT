@@ -1,6 +1,10 @@
 ﻿## [6.1.36.6116]
 
-* Corre&ccedil;&otilde;es e melhorias diversos.
+**Novidades**
+
+* DSP4G-393 - Adicionado ao pacote de instalação do componente o arquivo "IDs_LIBs_CFeSat.ini" contendo os ID´s das OCXs.
+* DSP4G-388 - Disponibilizado novo método GetNomeCertificadoViaCaminho, mais informações no link abaixo. Para mais detalhes de como utilizar [GetNomeCertificadoViaCaminho](https://atendimento.tecnospeed.com.br/hc/pt-br/articles/8683313858839).
+* DSP4G-419 - Componente SAT : TecnoAccount cadastrar licença manualmente.
 
 ## [6.1.36.6113]
 
