@@ -1,4 +1,10 @@
-﻿## [6.1.36.6116]
+﻿## [6.1.36.6118]
+
+**Correções**
+
+* DSML-331 - Método "ConverteXmlparaDataSet" com valor fixo no parâmetro "aVersaoEsquema".
+
+## [6.1.36.6116]
 
 **Novidades**
 
@@ -33,6 +39,7 @@
 **Novidades**
 
 * DCEV-555 - Compatibilização do componente com o Delphi 11 Alexandria
+
 
 
 
