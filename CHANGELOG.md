@@ -1,6 +1,7 @@
 ﻿## [6.1.36.6121]
 
-* Corre&ccedil;&otilde;es e melhorias diversos.
+**Novidades**
+* DSP4G-785 - Compatibilizado com atualizações do componente indy
 
 ## [6.1.36.6118]
 
