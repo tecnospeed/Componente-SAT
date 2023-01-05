@@ -1,4 +1,8 @@
-﻿## [6.1.36.6118]
+﻿## [6.1.36.6121]
+
+* Corre&ccedil;&otilde;es e melhorias diversos.
+
+## [6.1.36.6118]
 
 **Correções**
 
@@ -39,6 +43,7 @@
 **Novidades**
 
 * DCEV-555 - Compatibilização do componente com o Delphi 11 Alexandria
+
 
 
 
