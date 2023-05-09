@@ -1,4 +1,11 @@
-﻿## [6.1.36.6121]
+﻿## [6.1.37.2]
+
+**Correções**
+
+* DSML-446 - Correção do erro ao converter os campos `xCampo_z04` e `cMp_WA03` <span dir="">do xml para DataSet</span> do método `ConverteXmlparaDataSet`;
+* DSML-482 - Corrigido o nome do executável do Dependêncies Tecnoaccount.
+
+## [6.1.36.6121]
 
 **Novidades**
 * DSP4G-785 - Compatibilizado com atualizações do componente indy
@@ -44,6 +51,7 @@
 **Novidades**
 
 * DCEV-555 - Compatibilização do componente com o Delphi 11 Alexandria
+
 
 
 
