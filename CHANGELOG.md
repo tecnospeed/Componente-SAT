@@ -1,4 +1,11 @@
-﻿## [6.1.37.2]
+﻿## [6.1.37.4]
+
+#Correções
+- DSML-724- CFe- SAT - Falha na formatação do valor ao gerar de QRCode
+
+
+
+## [6.1.37.2]
 
 **Correções**
 
@@ -51,6 +58,7 @@
 **Novidades**
 
 * DCEV-555 - Compatibilização do componente com o Delphi 11 Alexandria
+
 
 
 
