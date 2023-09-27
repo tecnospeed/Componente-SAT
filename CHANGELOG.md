@@ -1,4 +1,14 @@
-﻿## [6.1.37.4]
+﻿## [7.1.37.12]
+
+**Novidades**
+
+ **DSML-864** - Compatibilização com a versão de leiaute 0.09  [Para mais detalhes acesse](https://blog.tecnospeed.com.br/cf-e-sat-especificacao-tecnica-de-requisitos-v-2-30-03-e-manual-de-orientacao-v-02-19-04/)
+
+**Correções**
+
+**DSML-490** - Correção do erro `Access Violation` do método `ConsultaUltimaSessaoFiscal` nos aparelhos SAT;
+
+## [6.1.37.4]
 
 #Correções
 - DSML-724- CFe- SAT - Falha na formatação do valor ao gerar de QRCode
@@ -58,6 +68,7 @@
 **Novidades**
 
 * DCEV-555 - Compatibilização do componente com o Delphi 11 Alexandria
+
 
 
 
