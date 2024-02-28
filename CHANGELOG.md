@@ -1,4 +1,12 @@
-﻿## [7.1.37.12]
+﻿## [7.1.38.15]
+
+**Novidades**
+
+ **DSML-866** - Compatibilização com a versão do leiaute 0.10  [Para mais detalhes acesse](https://blog.tecnospeed.com.br/cf-e-sat-especificacao-tecnica-de-requisitos-v-2-30-03-e-manual-de-orientacao-v-02-19-04/)
+
+**DSP4G-772** - integração por arquivo no formato JSON pelo novo metodo [ConverterLoteJsonParaXml](https://tecnospeed.zendesk.com/hc/pt-br/articles/20892383730967)
+
+## [7.1.37.12]
 
 **Novidades**
 
@@ -68,6 +76,7 @@
 **Novidades**
 
 * DCEV-555 - Compatibilização do componente com o Delphi 11 Alexandria
+
 
 
 
