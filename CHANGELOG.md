@@ -1,4 +1,10 @@
-﻿## [7.1.38.15]
+﻿## [7.1.39.18]
+
+**Novidade**
+
+* DSML-1021 atualizando versão para o Delphi 12 - Athenas
+
+## [7.1.38.15]
 
 **Novidades**
 
@@ -76,6 +82,7 @@
 **Novidades**
 
 * DCEV-555 - Compatibilização do componente com o Delphi 11 Alexandria
+
 
 
 
